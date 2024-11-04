@@ -1,0 +1,22 @@
+<div class="pokemon-dropdown">
+    <h1>Sélectionnez un Pokémon</h1>
+    
+    <select (change)="onPokemonSelected($event)">
+      <option value="">-- Choisir un Pokémon --</option>
+      <option *ngFor="let pokemon of pokemons" [value]="pokemon.id">
+        {{ pokemon.name }}
+      </option>
+    </select>
+  
+    <div *ngIf="selectedPokemon">
+      <h2>Détails du Pokémon</h2>
+      <img [src]="selectedPokemon.picture" alt="{{ selectedPokemon.name }}" />
+      <p>ID: {{ selectedPokemon.id }}</p>
+      <p>HP: {{ selectedPokemon.hp }}</p>
+      <p>CP: {{ selectedPokemon.cp }}</p>
+      <p>Types: <span class="{{ type | pokemonTypeColor }}" *ngFor="let type of selectedPokemon.types; let isLast = last" >
+        {{ type}}<span *ngIf="!isLast">, </span>
+      </span></p>
+      <p>Créé le: {{ selectedPokemon.created | date:'dd/MM/yyyy' }}</p>
+    </div>
+  </div>
