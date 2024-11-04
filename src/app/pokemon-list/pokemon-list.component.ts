@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { POKEMONS } from '../mock-pokemons';
+import { PokemonsServiceService } from '../pokemons-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -11,9 +13,12 @@ export class PokemonListComponent implements OnInit {
   title = 'pokemon';
   selectedPokemon: Pokemon | undefined;
  pokemons: Pokemon[] = [];
-
+  constructor(private router: Router,
+    private pokemonsService:PokemonsServiceService){
+    pokemonsService=this.pokemonsService;
+  }
   ngOnInit() {
-    this.pokemons = POKEMONS
+    this.pokemons = this.pokemonsService.getPokemons();
     }
     onPokemonSelected(event: Event): void {
       const selectElement = event.target as HTMLSelectElement; // Assurez-vous que target est un élément select
