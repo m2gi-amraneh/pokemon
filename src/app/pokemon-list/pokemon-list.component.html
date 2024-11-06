@@ -7,10 +7,10 @@
         {{ pokemon.name }}
       </option>
     </select>
-  
+    <button (click)="addPokemon()">Ajouter un Pokémon</button>
     <div *ngIf="selectedPokemon">
       <h2>Détails du Pokémon</h2>
-      <img [src]="selectedPokemon.picture" alt="{{ selectedPokemon.name }}" />
+      <img (click)="gotodetail(selectedPokemon.id)" [src]="selectedPokemon.picture" alt="{{ selectedPokemon.name }}" />
       <p>ID: {{ selectedPokemon.id }}</p>
       <p>HP: {{ selectedPokemon.hp }}</p>
       <p>CP: {{ selectedPokemon.cp }}</p>

@@ -10,6 +10,11 @@ import { Router } from '@angular/router';
   styleUrl: './pokemon-list.component.css'
 })
 export class PokemonListComponent implements OnInit {
+
+gotodetail(id:number) {
+  console.log(id)
+  this.router.navigate([`/pokemons/${id}`]);
+}
   title = 'pokemon';
   selectedPokemon: Pokemon | undefined;
  pokemons: Pokemon[] = [];
@@ -18,8 +23,16 @@ export class PokemonListComponent implements OnInit {
     pokemonsService=this.pokemonsService;
   }
   ngOnInit() {
-    this.pokemons = this.pokemonsService.getPokemons();
-    }
+    this.pokemonsService.getP().subscribe(
+      (data) => {
+        this.pokemons = data;
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération du Pokémon:', error);
+      }
+    );
+  }
+    
     onPokemonSelected(event: Event): void {
       const selectElement = event.target as HTMLSelectElement; // Assurez-vous que target est un élément select
       const pokemonId = selectElement.value; // Récupérer la valeur
@@ -28,4 +41,9 @@ export class PokemonListComponent implements OnInit {
       // Vérifiez si l'ID est valide et trouvez le Pokémon correspondant
       this.selectedPokemon = this.pokemons.find(pokemon => pokemon.id === id);
     }
+   addPokemon(): void {
+    
+    this.router.navigate([`/add-pokemon`]);
+      
+}
 }

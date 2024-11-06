@@ -4,6 +4,7 @@ import { ActivatedRoute,Router,Params } from '@angular/router';
 import { Pokemon } from '../pokemon';
 import { POKEMONS } from '../mock-pokemons';
 import { Utils } from '../utils';
+import { PokemonsServiceService } from '../pokemons-service.service';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -14,7 +15,7 @@ export class PokemonDetailComponent implements OnInit {
   pokemons: Pokemon[] =[]; 
   pokemon: Pokemon|null=null ; 
   
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router,private pokemonsertvice :PokemonsServiceService) {this.pokemonsertvice=pokemonsertvice}
   ngOnInit(): void {
   
   this.pokemons = POKEMONS;
@@ -35,5 +36,26 @@ export class PokemonDetailComponent implements OnInit {
   }
   notnull(){
     return this.pokemon !== null && this.pokemon !== undefined;
+  }
+  editPokemon(): void {
+    if (this.pokemon) {
+      this.router.navigate(['edit-pokemon', this.pokemon.id]);
+    }
+  }
+
+  // Méthode pour supprimer le Pokémon
+  deletePokemon(): void {
+    if (this.pokemon) {
+      const confirmed = confirm(`Voulez-vous vraiment supprimer ${this.pokemon.name} ?`);
+      if (confirmed) {
+        this.pokemonsertvice.deletePokemon(this.pokemon.id).subscribe(
+          () => {
+            alert(`${this.pokemon!.name} a été supprimé.`);
+            this.router.navigate(['/pokemons']);
+          },
+          (error) => console.error('Erreur lors de la suppression du Pokémon:', error)
+        );
+      }
+    }
   }
 }
