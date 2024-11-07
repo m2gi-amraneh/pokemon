@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { POKEMONS } from '../model/mock-pokemons';
 import { Pokemon } from '../model/pokemon';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, of, tap } from 'rxjs';
+import { POKEMONS } from '../model/mock-pokemons';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +14,24 @@ export class PokemonsServiceService {
     // on renvoie un tableau vide sous la forme d'un Observable avec 'of'.
     return of([]);
     }
-    return this.http.get<Pokemon[]>(`${this.apiUrl}/search?term=${term}`);
-    }
-  log(arg0: string): void {
-    console.log(arg0);
-  }
-  handleError<T>(arg0: string, arg1: never[]): (err: any, caught: Observable<Pokemon[]>) => import("rxjs").ObservableInput<any> {
-    throw new Error('erreur.');
-  }
+    return this.http.get<Pokemon[]>(`${this.apiUrl}/search?term=${term}`).pipe(
+      tap(_ => this.log(`found pokemons matching "${term}"`)),
+      catchError(this.handleError<Pokemon[]>('searchPokemons', []))
+      );
+      }
+      log(message: string): void {
+        console.log(message);
+      }
+
+      // Fonction pour gérer les erreurs
+      handleError<T>(operation = 'operation', result?: T) {
+        return (error: HttpErrorResponse): Observable<T> => {
+          console.error(`${operation} failed: ${error.message}`); // Affiche l'erreur dans la console
+
+          // Retourne un résultat par défaut (le tableau vide ici)
+          return of(result as T);
+        };
+      }
 
 
 // Retourne tous les pokémons
