@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {  OnInit } from '@angular/core';
 import { ActivatedRoute,Router,Params } from '@angular/router';
 import { Pokemon } from '../model/pokemon';
-import { POKEMONS } from '../model/mock-pokemons';
 import { Utils } from '../utils';
 import { PokemonsServiceService } from '../services/pokemons-service.service';
 
