@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from './pokemon';
-import {POKEMONS} from './mock-pokemons'
+import { Pokemon } from './model/pokemon';
+import {POKEMONS} from './model/mock-pokemons'
 
-import { PokemonTypeColorPipe } from './colortrypepokemon'
+import { PokemonTypeColorPipe } from './pipe/colortrypepokemon'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,5 +10,5 @@ import { PokemonTypeColorPipe } from './colortrypepokemon'
 })
 export class AppComponent  {
 
- 
+
 }

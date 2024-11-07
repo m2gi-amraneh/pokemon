@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../pokemon';
-import { POKEMONS } from '../mock-pokemons';
-import { PokemonsServiceService } from '../pokemons-service.service';
+import { Pokemon } from '../model/pokemon';
+import { POKEMONS } from '../model/mock-pokemons';
+import { PokemonsServiceService } from '../services/pokemons-service.service';
 import { Router } from '@angular/router';
 import { RechercheComponent } from '../recherche/recherche.component';
 @Component({

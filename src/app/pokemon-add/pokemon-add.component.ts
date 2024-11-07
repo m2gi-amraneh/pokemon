@@ -1,7 +1,7 @@
 import { Component, isStandalone } from '@angular/core';
-import { Pokemon } from '../pokemon';
+import { Pokemon } from '../model/pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PokemonsServiceService } from '../pokemons-service.service';
+import { PokemonsServiceService } from '../services/pokemons-service.service';
 import { NgClass } from '@angular/common';
 import { AppModule } from '../app.module';
 import { FormsModule } from '@angular/forms';

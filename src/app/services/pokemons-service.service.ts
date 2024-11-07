@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { POKEMONS } from './mock-pokemons';
-import { Pokemon } from './pokemon';
+import { POKEMONS } from '../model/mock-pokemons';
+import { Pokemon } from '../model/pokemon';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of, tap } from 'rxjs';
 
