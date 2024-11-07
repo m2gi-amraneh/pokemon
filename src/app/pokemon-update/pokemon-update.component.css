@@ -1,0 +1,93 @@
+/* pokemon-modify.component.css */
+
+/* Conteneur du formulaire */
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Groupes de champs de formulaire */
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: bold;
+  width: 150px;
+  text-align: right;
+}
+
+.form-group input {
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+}
+
+/* Icônes FontAwesome */
+.form-group i {
+  font-size: 20px;
+  color: #007bff;
+}
+
+/* Actions de formulaire */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Boutons spécifiques */
+.btn-submit {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-submit i,
+.btn-cancel i {
+  margin-right: 10px;
+}
+
+.btn-submit:hover {
+  background-color: #218838;
+}
+
+.btn-cancel:hover {
+  background-color: #c82333;
+}

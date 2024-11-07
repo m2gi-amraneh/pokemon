@@ -1,0 +1,80 @@
+/* Container for the entire dropdown and list */
+.pokemon-dropdown {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Add button styling */
+.btn-add {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}
+
+.btn-add i {
+  margin-right: 8px;
+}
+
+/* Container for the Pokémon list */
+.pokemon-list-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+/* Individual Pokémon card styling */
+.pokemon-card {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.03);
+  border-color: #007bff;
+}
+
+/* Pokémon image styling */
+.pokemon-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 15px;
+  border-radius: 8px;
+}
+
+/* Text styling for Pokémon name */
+.pokemon-info h4 {
+  margin: 0;
+  font-size: 1.4em;
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 768px) {
+  .pokemon-list-container {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}

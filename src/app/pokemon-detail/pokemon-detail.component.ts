@@ -12,25 +12,22 @@ import { PokemonsServiceService } from '../pokemons-service.service';
   styleUrl: './pokemon-detail.component.css'
 })
 export class PokemonDetailComponent implements OnInit {
-  pokemons: Pokemon[] =[]; 
-  pokemon: Pokemon|null=null ; 
-  
+  pokemons: Pokemon[] =[];
+  pokemon: Pokemon|null=null ;
+
   constructor(private route: ActivatedRoute, private router: Router,private pokemonsertvice :PokemonsServiceService) {this.pokemonsertvice=pokemonsertvice}
   ngOnInit(): void {
-  
-  this.pokemons = POKEMONS;
-  
-  let id = +this.route.snapshot.paramMap.get("id")!; 
-  
-  for (let i = 0; i < this.pokemons.length; i++) {
 
-  if (this.pokemons[i].id == id) {
-  this.pokemon = this.pokemons[i];
-   }
-   }
-   if(this.pokemon== null){this.router.navigate(['/**'])}
+
+
+  let id = +this.route.snapshot.paramMap.get("id")!;
+
+  this.pokemonsertvice.getPokemonById(id).subscribe((data)=>{this.pokemon=data},
+  (error) => {
+    console.error('Erreur lors de la récupération du Pokémon:', error);
+  })
   }
-  
+
   goBack(): void {
   this.router.navigate(['/pokemons']);
   }

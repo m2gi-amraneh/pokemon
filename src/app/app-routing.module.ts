@@ -5,11 +5,18 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { PokemonUpdateComponent } from './pokemon-update/pokemon-update.component';
 import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
-const routes: Routes = [{ path: 'pokemons', component: PokemonListComponent },
-{ path: 'pokemons/:id', component: PokemonDetailComponent },
-{path:'edit-pokemon/:id', component: PokemonUpdateComponent},
-{path:'add-pokemon', component: PokemonAddComponent},
-{ path: '', redirectTo: 'pokemons', pathMatch: 'full' },
+import { authGuard } from './services/auth.guard';
+import { LoginComponent } from './login/login.component';
+const routes: Routes = [{
+  path: 'pokemons',component: PokemonListComponent,
+  canActivate: [authGuard]
+},
+  { path: 'login', component: LoginComponent, },
+
+{ path: 'pokemons/:id', component: PokemonDetailComponent,canActivate: [authGuard] },
+{path:'edit-pokemon/:id', component: PokemonUpdateComponent,canActivate: [authGuard]},
+{path:'add-pokemon', component: PokemonAddComponent,canActivate: [authGuard]},
+{ path: '', redirectTo: 'login', pathMatch: 'full' },
 { path: '**', component: PageNotFoundComponent }
 ];
 

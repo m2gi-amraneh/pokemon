@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PokemonApi.Models;
+using PokemonApi.service;
 
 namespace PokemonApi.Controllers
 {
@@ -9,10 +10,12 @@ namespace PokemonApi.Controllers
     public class PokemonController : ControllerBase
     {
         private readonly PokemonContext _context;
+         private readonly PokemonService _pokemonService;
 
         public PokemonController(PokemonContext context)
         {
             _context = context;
+              _pokemonService = new PokemonService(_context);
         }
 
         // GET: api/pokemon
@@ -90,5 +93,15 @@ namespace PokemonApi.Controllers
         {
             return _context.Pokemons.Any(e => e.Id == id);
         }
-    }
+         [HttpGet("search")]
+    public async Task<ActionResult<IEnumerable<Pokemon>>> Search([FromQuery] string term)
+    {
+        var results = await _pokemonService.SearchPokemonsAsync(term);
+        if (!results.Any())
+        {
+            return NotFound("No Pokémon found matching the search term.");
+        }
+
+        return Ok(results);
+    }}
 }

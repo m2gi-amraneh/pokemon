@@ -1,22 +1,26 @@
 <div class="pokemon-dropdown">
-    <h1>Sélectionnez un Pokémon</h1>
-    
-    <select (change)="onPokemonSelected($event)">
-      <option value="">-- Choisir un Pokémon --</option>
-      <option *ngFor="let pokemon of pokemons" [value]="pokemon.id">
-        {{ pokemon.name }}
-      </option>
-    </select>
-    <button (click)="addPokemon()">Ajouter un Pokémon</button>
-    <div *ngIf="selectedPokemon">
-      <h2>Détails du Pokémon</h2>
-      <img (click)="gotodetail(selectedPokemon.id)" [src]="selectedPokemon.picture" alt="{{ selectedPokemon.name }}" />
-      <p>ID: {{ selectedPokemon.id }}</p>
-      <p>HP: {{ selectedPokemon.hp }}</p>
-      <p>CP: {{ selectedPokemon.cp }}</p>
-      <p>Types: <span class="{{ type | pokemonTypeColor }}" *ngFor="let type of selectedPokemon.types; let isLast = last" >
-        {{ type}}<span *ngIf="!isLast">, </span>
-      </span></p>
-      <p>Créé le: {{ selectedPokemon.created | date:'dd/MM/yyyy' }}</p>
+  <!-- Recherche avec une icône -->
+  <app-recherche></app-recherche>
+
+
+
+
+
+  <!-- Bouton d'ajout de Pokémon avec une icône FontAwesome -->
+  <button class="btn-add" (click)="addPokemon()">
+    <i class="fas fa-plus"></i> Ajouter un Pokémon
+  </button>
+
+  <!-- Détails du Pokémon sélectionné avec des icônes FontAwesome -->
+
+  <div class="pokemon-list-container">
+    <div class="pokemon-card" *ngFor="let pokemon of pokemons" (click)="gotodetail(pokemon.id)">
+      <img [src]="pokemon.picture" alt="{{ pokemon.name }}" class="pokemon-image" />
+      <div class="pokemon-info">
+        <h4>{{ pokemon.name }}</h4>
+      </div>
     </div>
   </div>
+  
+
+</div>

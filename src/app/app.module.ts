@@ -10,13 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { PokemonUpdateComponent } from './pokemon-update/pokemon-update.component';
 import { FormsModule } from '@angular/forms';
 import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
-
+import { RechercheComponent } from './recherche/recherche.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
-    AppComponent,PokemonTypeColorPipe, PokemonDetailComponent, PokemonListComponent, PokemonUpdateComponent, PokemonAddComponent
-  ],
-  imports: [FormsModule ,
-    BrowserModule,
+    AppComponent,PokemonTypeColorPipe, PokemonDetailComponent, PokemonListComponent, PokemonUpdateComponent,
+
+   ],
+  imports: [FormsModule , PokemonAddComponent,
+    BrowserModule,RechercheComponent,FontAwesomeModule,
     AppRoutingModule,HttpClientModule
   ],
   providers: [],

@@ -4511,19 +4511,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hamrane\\.nuget\\packages\\": {}
+    "C:\\Users\\HAMRANE.GPI\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hamrane\\Desktop\\PokemonApi\\PokemonApi.csproj",
+      "projectUniqueName": "C:\\Users\\HAMRANE.GPI\\Desktop\\tuto_pokemon\\pokemon\\PokemonApi\\PokemonApi.csproj",
       "projectName": "PokemonApi",
-      "projectPath": "C:\\Users\\hamrane\\Desktop\\PokemonApi\\PokemonApi.csproj",
-      "packagesPath": "C:\\Users\\hamrane\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hamrane\\Desktop\\PokemonApi\\obj\\",
+      "projectPath": "C:\\Users\\HAMRANE.GPI\\Desktop\\tuto_pokemon\\pokemon\\PokemonApi\\PokemonApi.csproj",
+      "packagesPath": "C:\\Users\\HAMRANE.GPI\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HAMRANE.GPI\\Desktop\\tuto_pokemon\\pokemon\\PokemonApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hamrane\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HAMRANE.GPI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

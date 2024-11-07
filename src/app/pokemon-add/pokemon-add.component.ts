@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, isStandalone } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonsServiceService } from '../pokemons-service.service';
+import { NgClass } from '@angular/common';
+import { AppModule } from '../app.module';
+import { FormsModule } from '@angular/forms';
 
 @Component({
+  standalone: true,
+  imports: [NgClass,FormsModule],
   selector: 'app-pokemon-add',
   templateUrl: './pokemon-add.component.html',
   styleUrl: './pokemon-add.component.css'
@@ -18,9 +23,9 @@ export class PokemonAddComponent {
     private pokemonService: PokemonsServiceService
   ) {}
   onSubmit(): void {
-    
-  
-      
+
+
+
       this.pokemon!.types = this.typesInput.split(',').map(type => type.trim());
       this.pokemonService.addPokemon(this.pokemon!).subscribe(
         () => {
@@ -29,7 +34,7 @@ export class PokemonAddComponent {
         },
         (error) => console.error('Erreur lors de la mise à jour du Pokémon:', error)
       );
-    
+
   }
 
   cancel(): void {
